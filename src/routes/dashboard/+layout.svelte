@@ -7,7 +7,9 @@
     $: activeUrl = $page.url.pathname;
 </script>
 
-<slot />
+<div class="p-4">
+    <slot />
+</div>
 <div class="btm-nav">
     <a class={activeUrl === "/dashboard" ? "active" : ""} href="/dashboard">
         <Icon data={home} scale="1.5" />

@@ -85,31 +85,31 @@ To build the Warranty application, I've divided the project into smaller tasks t
 
 ### Version 1.0 - Basic Functionality
 
--   [] User registration and authentication
--   [] Receipt upload with image, product name, and purchase date
-    [] Dashboard to display uploaded receipts
-    [] Categorization of receipts (expiring soon, newly uploaded, expired)
-    [] Search functionality
+-   [ ] User registration and authentication
+-   [ ] Receipt upload with image, product name, and purchase date
+-   [ ] Dashboard to display uploaded receipts
+-   [ ] Categorization of receipts (expiring soon, newly uploaded, expired)
+-   [ ] Search functionality
 
 ### Version 2.0 - Customization and User Management
 
-[] Customizable default warranty times
-[] Configurable dashboard view
-[] User management (add, block, or allow new sign-ups)
+-   [ ] Customizable default warranty times
+-   [ ] Configurable dashboard view
+-   [ ] User management (add, block, or allow new sign-ups)
 
 ### Version 3.0 - Image Recognition
 
-[] Implement image recognition to extract text from receipts
-[] Automatically populate product name and purchase date
-[] Improve search functionality with extracted data
+-   [ ] Implement image recognition to extract text from receipts
+-   [ ] Automatically populate product name and purchase date
+-   [ ] Improve search functionality with extracted data
 
 ### Version 4.0 - Performance and Scaling
 
-[] Optimize application performance
-[] Implement data scaling strategies
-[] Add additional features based on user feedback
+-   [ ] Optimize application performance
+-   [ ] Implement data scaling strategies
+-   [ ] Add additional features based on user feedback
 
 ### Version 5.0 - Mobile App Integration
 
-[] Develop mobile applications for iOS and Android
-[] Enable users to access Warranty on mobile devices
+-   [ ] Develop mobile applications for iOS and Android
+-   [ ] Enable users to access Warranty on mobile devices

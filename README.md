@@ -89,6 +89,7 @@ To build the Warranty application, I've divided the project into smaller tasks t
 -   [ ] Receipt upload with image, product name, and purchase date
 -   [ ] Dashboard to display uploaded receipts
 -   [ ] Categorization of receipts (expiring soon, newly uploaded, expired)
+-   [ ] Docker compose, dockerfile and .env setup for production
 -   [ ] Search functionality
 
 ### Version 2.0 - Customization and User Management

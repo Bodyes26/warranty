@@ -26,7 +26,7 @@ Follow these steps to set up the Warranty application on your system:
 1. Clone the project repository:
 
     ```bash
-    git clone https://github.com/yourusername/warranty.git
+    git clone https://github.com/Bodyes26/warranty.git &&
     cd warranty
     ```
 
@@ -50,7 +50,7 @@ If you want to clone the repo to develop some functionalities, you'll need:
 2. clone the repo with:
 
     ```bash
-    git clone https://github.com/yourusername/warranty.git
+    git clone https://github.com/Bodyes26/warranty.git &&
     cd warranty
     ```
 
@@ -73,7 +73,7 @@ If you want to clone the repo to develop some functionalities, you'll need:
    Inside the folder of the project
 
     ```bash
-        npm install
+        npm install &&
         npm run dev
     ```
 
@@ -85,11 +85,11 @@ To build the Warranty application, I've divided the project into smaller tasks t
 
 ### Version 1.0 - Basic Functionality
 
-[] User registration and authentication
-[] Receipt upload with image, product name, and purchase date
-[] Dashboard to display uploaded receipts
-[] Categorization of receipts (expiring soon, newly uploaded, expired)
-[] Search functionality
+-   [] User registration and authentication
+-   [] Receipt upload with image, product name, and purchase date
+    [] Dashboard to display uploaded receipts
+    [] Categorization of receipts (expiring soon, newly uploaded, expired)
+    [] Search functionality
 
 ### Version 2.0 - Customization and User Management
 

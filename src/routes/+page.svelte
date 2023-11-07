@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import { pb } from "$lib/pocketbase";
+    import { onMount } from "svelte";
+
+    let temp = [];
+    onMount(async () => {
+        temp = await pb.collection("receipts").getFullList({
+            sort: "-created",
+        });
+        console.log("ciao fatto pb!");
+    });
+</script>
+
+<div>temp length = {temp.length}</div>
+<div>temp = {temp}</div>

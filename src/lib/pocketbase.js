@@ -1,7 +1,8 @@
 import Pocketbase from "pocketbase";
 import { writable } from "svelte/store";
+import { PUBLIC_PB_URL } from "$env/static/public";
 
-export const pb = new Pocketbase("https://pb_warranty.myapollo.it");
+export const pb = new Pocketbase(PUBLIC_PB_URL);
 export const currentUser = writable(pb.authStore.model);
 pb.autoCancellation(false);
 

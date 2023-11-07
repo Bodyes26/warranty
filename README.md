@@ -12,72 +12,7 @@ In the future, we plan to implement image recognition to automatically extract t
 
 ## Getting Started
 
-### Prerequisites
-
-Before getting started, you'll need to ensure that you have the following prerequisites installed on your system:
-
--   Docker
--   Docker Compose
-
-### Installation
-
-Follow these steps to set up the Warranty application on your system:
-
-1. Clone the project repository:
-
-    ```bash
-    git clone https://github.com/Bodyes26/warranty.git &&
-    cd warranty
-    ```
-
-2. start up the container:
-
-    ```bash
-    docker compose up -d
-    ```
-
-3. Go to the URL you set up before (default is localhost:23222)
-
-### Development
-
-If you want to clone the repo to develop some functionalities, you'll need:
-
--   nodejs
--   npm
-
-1. download pocketbase from https://pocketbase.io
-
-2. clone the repo with:
-
-    ```bash
-    git clone https://github.com/Bodyes26/warranty.git &&
-    cd warranty
-    ```
-
-3. copy the downloaded pocketbase executable in the pb_dev folder
-
-    This folder contains a example database with some data to test
-
-4. modify the PB_URL in .env:
-
-    you need to modifiy the PB_URL to http://localhost:8090 (the default for pocketbase)
-
-5. start pocketbase server:
-   Inside the pb_dev folder exec
-
-    ```bash
-        ./pocketbase serve
-    ```
-
-6. start dev server:
-   Inside the folder of the project
-
-    ```bash
-        npm install &&
-        npm run dev
-    ```
-
-7. Go to localhost:5173 and you'll se the dev server
+TODO
 
 ## Roadmap
 
@@ -85,9 +20,9 @@ To build the Warranty application, I've divided the project into smaller tasks t
 
 ### Version 1.0 - Basic Functionality
 
--   [ ] User registration and authentication
+-   [x] User registration and authentication
 -   [ ] Receipt upload with image, product name, and purchase date
--   [ ] Dashboard to display uploaded receipts
+-   [x] Dashboard to display uploaded receipts
 -   [ ] Categorization of receipts (expiring soon, newly uploaded, expired)
 -   [ ] Docker compose, dockerfile and .env setup for production
 -   [ ] Search functionality
@@ -114,3 +49,14 @@ To build the Warranty application, I've divided the project into smaller tasks t
 
 -   [ ] Develop mobile applications for iOS and Android
 -   [ ] Enable users to access Warranty on mobile devices
+
+## Default users
+
+-   Pocketbase admin:
+
+    -   warranty@admin.admin
+    -   Warranty23
+
+-   Pocketbase dev test user:
+    -   test
+    -   test1234

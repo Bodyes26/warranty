@@ -13,7 +13,6 @@
         showToastSaved = false,
         showToastError = false;
 
-    // TODO: upload receipt to pocketbase
     async function loadReceipt() {
         try {
             loading = true;

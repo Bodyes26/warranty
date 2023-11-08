@@ -1,15 +1,13 @@
 <script>
-    import { pb } from "$lib/pocketbase";
+    import { currentUser } from "$lib/pocketbase";
+    import { goto } from "$app/navigation";
     import { onMount } from "svelte";
 
-    let temp = [];
     onMount(async () => {
-        temp = await pb.collection("receipts").getFullList({
-            sort: "-created",
-        });
-        console.log("ciao fatto pb!");
+        if ($currentUser === null || $currentUser === undefined) goto("/login");
+        if ($currentUser.id === null || $currentUser.id === undefined)
+            goto("/login");
+
+        goto("/dashboard");
     });
 </script>
-
-<div>temp length = {temp.length}</div>
-<div>temp = {temp}</div>

@@ -3,6 +3,8 @@
     import camera from "svelte-awesome/icons/camera";
     import cloudUpload from "svelte-awesome/icons/cloudUpload";
     import { pb, currentUser } from "$lib/pocketbase";
+    import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
 
     let files = [],
         fileInput,
@@ -12,6 +14,12 @@
         form,
         showToastSaved = false,
         showToastError = false;
+
+    onMount(() => {
+        if ($currentUser === null || $currentUser === undefined) goto("/login");
+        if ($currentUser.id === null || $currentUser.id === undefined)
+            goto("/login");
+    });
 
     async function loadReceipt() {
         try {

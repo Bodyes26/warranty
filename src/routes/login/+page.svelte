@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-    import { pb } from "$lib/pocketbase";
+    import { pb, currentUser } from "$lib/pocketbase";
     import { onMount } from "svelte";
     let username,
         password,
@@ -10,6 +10,11 @@
         activeTab = 0;
 
     onMount(() => {
+        if ($currentUser !== null || $currentUser !== undefined)
+            goto("/dashboard");
+        if ($currentUser.id !== null || $currentUser.id !== undefined)
+            goto("/dashboard");
+
         if (window.location.hash === "#login") {
             activeTab = 0;
         } else if (window.location.hash === "#register") {

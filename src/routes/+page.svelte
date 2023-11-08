@@ -4,10 +4,19 @@
     import { onMount } from "svelte";
 
     onMount(async () => {
-        if ($currentUser === null || $currentUser === undefined) goto("/login");
-        if ($currentUser.id === null || $currentUser.id === undefined)
+        if ($currentUser === null || $currentUser === undefined) {
+            console.log("currentuser = null or undefined, redirect to login");
             goto("/login");
+            return;
+        } else if ($currentUser.id === null || $currentUser.id === undefined) {
+            console.log(
+                "currentuser != null or undefined but id is, redirect to login"
+            );
 
-        goto("/dashboard");
+            goto("/login");
+        } else {
+            console.log("currentuser is ok, redirect to dashboard");
+            goto("/dashboard");
+        }
     });
 </script>

@@ -1,5 +1,7 @@
 <script>
-    import { pb } from "$lib/pocketbase";
+    import { pb, currentUser } from "$lib/pocketbase";
+    import { goto } from "$app/navigation";
+
     import { onMount } from "svelte";
     import download from "svelte-awesome/icons/download";
     import Icon from "svelte-awesome";
@@ -7,6 +9,10 @@
 
     let receipts = [];
     onMount(async () => {
+        if ($currentUser === null || $currentUser === undefined) goto("/login");
+        if ($currentUser.id === null || $currentUser.id === undefined)
+            goto("/login");
+
         let temp = await pb.collection("receipts").getFullList({
             sort: "-created",
         });

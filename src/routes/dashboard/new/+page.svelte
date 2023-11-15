@@ -17,8 +17,6 @@
 
     onMount(() => {
         if ($currentUser === null || $currentUser === undefined) goto("/login");
-        if ($currentUser.id === null || $currentUser.id === undefined)
-            goto("/login");
     });
 
     async function loadReceipt() {
@@ -31,9 +29,8 @@
                 formData.append("files", files[i]);
             }
             formData.append("user", $currentUser.id);
-            const record = await pb.collection("receipts").create(formData);
+            await pb.collection("receipts").create(formData);
             loading = false;
-            console.log("Salvato");
             form.reset();
             showToastSaved = true;
             setTimeout(() => {

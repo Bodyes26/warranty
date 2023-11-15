@@ -6,29 +6,16 @@
         password,
         confirmPassword,
         showToastError = false,
-        toastErrorMessage = "",
-        activeTab = 0;
+        toastErrorMessage = "";
 
     onMount(() => {
-        if ($currentUser !== null || $currentUser !== undefined)
+        if ($currentUser != null && $currentUser != undefined)
             goto("/dashboard");
-        if ($currentUser.id !== null || $currentUser.id !== undefined)
-            goto("/dashboard");
-
-        if (window.location.hash === "#login") {
-            activeTab = 0;
-        } else if (window.location.hash === "#register") {
-            activeTab = 1;
-        } else {
-            window.location.hash = "#login";
-        }
     });
 
     async function handleLogin() {
         try {
-            const authData = await pb
-                .collection("users")
-                .authWithPassword(username, password);
+            await pb.collection("users").authWithPassword(username, password);
             goto("/dashboard");
         } catch (error) {
             toastErrorMessage = "Invalid username or password";
@@ -59,7 +46,113 @@
 <div
     class="w-full min-h-screen flex flex-col items-center justify-center gap-2"
 >
-    <div class="tabs tabs-boxed">
+    <div class="tabs tabs-lifted">
+        <input
+            type="radio"
+            name="tabs_login"
+            class="tab"
+            aria-label="Login"
+            checked
+        />
+        <div class="tab-content bg-base-100 border-base-300 rounded-box p-10">
+            <form
+                on:submit|preventDefault={handleLogin}
+                class="w-full flex flex-col justify-center items-center gap-2"
+            >
+                <div class="form-control max-w-sm w-full">
+                    <label for="username" class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        class="input input-bordered max-w-sm w-full"
+                        bind:value={username}
+                        required
+                        autocomplete="username"
+                    />
+                </div>
+                <div class="form-control max-w-sm w-full">
+                    <label for="password" class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="input input-bordered max-w-sm w-full"
+                        bind:value={password}
+                        required
+                        autocomplete="current-password"
+                    />
+                </div>
+                <div class="grid grid-cols-2 gap-2 max-w-sm w-full mt-4">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    <button type="reset" class="btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <input
+            type="radio"
+            name="tabs_login"
+            class="tab"
+            aria-label="Register"
+        />
+        <div class="tab-content bg-base-100 border-base-300 rounded-box p-10">
+            <form
+                on:submit|preventDefault={handleRegister}
+                id="register"
+                class="w-full flex-col justify-center items-center gap-2 flex"
+            >
+                <div class="form-control max-w-sm w-full">
+                    <label for="username" class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        class="input input-bordered max-w-sm w-full"
+                        bind:value={username}
+                        required
+                        autocomplete="username"
+                    />
+                </div>
+                <div class="form-control max-w-sm w-full">
+                    <label for="password" class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="input input-bordered max-w-sm w-full"
+                        bind:value={password}
+                        required
+                        autocomplete="new-password"
+                    />
+                </div>
+                <div class="form-control max-w-sm w-full">
+                    <label for="confirm-password" class="label">
+                        <span class="label-text">Confirm Password</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        class="input input-bordered max-w-sm w-full"
+                        bind:value={confirmPassword}
+                        required
+                        autocomplete="new-password"
+                    />
+                </div>
+                <div class="grid grid-cols-2 gap-2 max-w-sm w-full mt-4">
+                    <button class="btn btn-primary" type="submit"
+                        >Sign up</button
+                    >
+                    <button type="reset" class="btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="tabs tabs-boxed">
         <a
             class={activeTab == 0 ? "tab tab-active" : "tab"}
             on:click={() => (activeTab = 0)}
@@ -74,94 +167,7 @@
         >
             Register
         </a>
-    </div>
-
-    <form
-        on:submit|preventDefault={handleLogin}
-        id="login"
-        class="w-full flex-col justify-center items-center gap-2 hidden target:flex"
-    >
-        <div class="form-control max-w-sm w-full">
-            <label for="username" class="label">
-                <span class="label-text">Username</span>
-            </label>
-            <input
-                type="text"
-                id="username"
-                class="input input-bordered max-w-sm w-full"
-                bind:value={username}
-                required
-                autocomplete="username"
-            />
-        </div>
-        <div class="form-control max-w-sm w-full">
-            <label for="password" class="label">
-                <span class="label-text">Password</span>
-            </label>
-            <input
-                type="password"
-                id="password"
-                class="input input-bordered max-w-sm w-full"
-                bind:value={password}
-                required
-                autocomplete="current-password"
-            />
-        </div>
-        <div class="grid grid-cols-2 gap-2 max-w-sm w-full mt-4">
-            <button class="btn btn-primary" type="submit">Login</button>
-            <button type="reset" class="btn">Cancel</button>
-        </div>
-    </form>
-
-    <form
-        on:submit|preventDefault={handleRegister}
-        id="register"
-        class="w-full hidden flex-col justify-center items-center gap-2 target:flex"
-    >
-        <div class="form-control max-w-sm w-full">
-            <label for="username" class="label">
-                <span class="label-text">Username</span>
-            </label>
-            <input
-                type="text"
-                id="username"
-                class="input input-bordered max-w-sm w-full"
-                bind:value={username}
-                required
-                autocomplete="username"
-            />
-        </div>
-        <div class="form-control max-w-sm w-full">
-            <label for="password" class="label">
-                <span class="label-text">Password</span>
-            </label>
-            <input
-                type="password"
-                id="password"
-                class="input input-bordered max-w-sm w-full"
-                bind:value={password}
-                required
-                autocomplete="new-password"
-            />
-        </div>
-        <div class="form-control max-w-sm w-full">
-            <label for="confirm-password" class="label">
-                <span class="label-text">Confirm Password</span>
-            </label>
-            <input
-                type="password"
-                id="confirm-password"
-                class="input input-bordered max-w-sm w-full"
-                bind:value={confirmPassword}
-                required
-                autocomplete="new-password"
-            />
-        </div>
-        <div class="grid grid-cols-2 gap-2 max-w-sm w-full mt-4">
-            <button class="btn btn-primary" type="submit">Sign up</button>
-            <button type="reset" class="btn">Cancel</button>
-        </div>
-    </form>
+    </div> -->
 </div>
 
 {#if showToastError}
